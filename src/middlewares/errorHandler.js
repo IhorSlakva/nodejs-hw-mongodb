@@ -2,11 +2,12 @@ import { HttpError } from 'http-errors';
 
 export const errorHandler = (error, req, res, next) => {
   if (error instanceof HttpError) {
-    return res.status(error.status).json({
+    res.status(error.status).json({
       status: error.status,
-      message: error.message,
-      data: { message: 'Contact not found' },
+      message: error.name,
+      data: error,
     });
+    return;
   }
 
   res.status(500).json({
