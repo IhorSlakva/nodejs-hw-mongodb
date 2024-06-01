@@ -32,9 +32,21 @@ export const getContactByIdController = async (req, res, next) => {
   });
 };
 
-export const createContactController = async (req, res) => {
+export const createContactController = async (req, res, next) => {
   const body = req.body;
+  const name = req.body.name;
+  const phoneNumber = req.body.phoneNumber;
   const contact = await createContact(body);
+
+  if (!name) {
+    next(createHttpError(400, 'Name is required'));
+    return;
+  }
+
+  if (!phoneNumber) {
+    next(createHttpError(400, 'phoneNumber is required'));
+    return;
+  }
 
   res.status(201).json({
     status: 201,
@@ -56,7 +68,7 @@ export const patchContactController = async (req, res, next) => {
   res.status(200).json({
     status: 200,
     message: 'Successfully patched a contact!',
-    data: result,
+    data: result.contact,
   });
 };
 
