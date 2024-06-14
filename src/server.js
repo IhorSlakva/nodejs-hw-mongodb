@@ -5,7 +5,8 @@ import { env } from './utils/env.js';
 import { ENV_VAR } from './constants/constans.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
-import contactsRouter from './routers/contacts.js';
+import rootRouter from './routers/index.js';
+import cookieParser from 'cookie-parser';
 
 export const setupServer = () => {
   const app = express();
@@ -14,9 +15,11 @@ export const setupServer = () => {
 
   app.use(cors());
 
+  app.use(cookieParser());
+
   app.use(express.json());
 
-  app.use(contactsRouter);
+  app.use(rootRouter);
 
   app.use('*', notFoundHandler);
 
