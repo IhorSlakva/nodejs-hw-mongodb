@@ -10,6 +10,7 @@ export const ENV_VARS = {
   SMTP_PASSWORD: 'SMTP_PASSWORD',
   SMTP_FROM: 'SMTP_FROM',
   JWT_SECRET: 'JWT_SECRET',
+  APP_DOMAIN: 'APP_DOMAIN',
 };
 
 export const SORT_ORDER = {
