@@ -9,6 +9,7 @@ import createHttpError from 'http-errors';
 import { parsePaginationParams } from '../utils/parsePaginationParams.js';
 import { parseSortParams } from '../utils/parseSortOrder.js';
 import { parseFilterParams } from '../utils/parseFilterParams.js';
+import { saveFileToCloudinary } from '../utils/saveFileToCloudinary.js';
 
 export const getContactsController = async (req, res) => {
   const { page, perPage } = parsePaginationParams(req.query);
@@ -46,7 +47,9 @@ export const getContactByIdController = async (req, res, next) => {
 };
 
 export const createContactController = async (req, res, next) => {
-  const body = { ...req.body, userId: req.user._id };
+  const fileUrl = await saveFileToCloudinary(req.file);
+
+  const body = { ...req.body, userId: req.user._id, photo: fileUrl };
   const name = req.body.name;
   const phoneNumber = req.body.phoneNumber;
 
@@ -70,9 +73,11 @@ export const createContactController = async (req, res, next) => {
 };
 
 export const patchContactController = async (req, res, next) => {
+  const fileUrl = await saveFileToCloudinary(req.file);
+
   const contactId = req.params.contactId;
   const body = req.body;
-  const result = await updateContact(contactId, body, req.user._id);
+  const result = await updateContact(contactId, body, req.user._id, fileUrl);
 
   if (!result) {
     next(createHttpError(404, 'Contact not found'));
