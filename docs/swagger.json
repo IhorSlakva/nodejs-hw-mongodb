@@ -100,7 +100,7 @@
             "name": "page",
             "schema": {
               "type": "number",
-              "example": "1"
+              "example": 1
             }
           },
           {
@@ -108,7 +108,7 @@
             "name": "perPage",
             "schema": {
               "type": "number",
-              "example": "5"
+              "example": 5
             }
           },
           {
@@ -128,6 +128,38 @@
                 "asc, desc"
               ],
               "example": "asc"
+            }
+          },
+          {
+            "in": "query",
+            "name": "totalItems",
+            "schema": {
+              "type": "number",
+              "example": 10
+            }
+          },
+          {
+            "in": "query",
+            "name": "totalPages",
+            "schema": {
+              "type": "number",
+              "example": 8
+            }
+          },
+          {
+            "in": "query",
+            "name": "hasNextPage",
+            "schema": {
+              "type": "boolean",
+              "example": true
+            }
+          },
+          {
+            "in": "query",
+            "name": "hasPreviousPage",
+            "schema": {
+              "type": "boolean",
+              "example": false
             }
           }
         ],
@@ -166,12 +198,21 @@
                       "type": "number",
                       "example": 5
                     },
-                    "sortBy": {
-                      "type": "string",
-                      "example": "_id"
+                    "totalItems": {
+                      "type": "number",
+                      "example": 10
                     },
-                    "sortOrder": {
-                      "example": "asc"
+                    "totalPages": {
+                      "type": "number",
+                      "example": 8
+                    },
+                    "hasNextPage": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "hasPreviousPage": {
+                      "type": "boolean",
+                      "example": false
                     }
                   }
                 }

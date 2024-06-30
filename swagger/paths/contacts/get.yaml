@@ -10,12 +10,12 @@ parameters:
     name: page
     schema:
       type: number
-      example: '1'
+      example: 1
   - in: query
     name: perPage
     schema:
       type: number
-      example: '5'
+      example: 5
   - in: query
     name: sortBy
     schema:
@@ -27,6 +27,26 @@ parameters:
       type: string
       enum: ['asc, desc']
       example: 'asc'
+  - in: query
+    name: totalItems
+    schema:
+      type: number
+      example: 10
+  - in: query
+    name: totalPages
+    schema:
+      type: number
+      example: 8
+  - in: query
+    name: hasNextPage
+    schema:
+      type: boolean
+      example: true
+  - in: query
+    name: hasPreviousPage
+    schema:
+      type: boolean
+      example: false
 responses:
   '200':
     description: 'Successfully found contacts!'
@@ -55,10 +75,18 @@ responses:
             perPage:
               type: number
               example: 5
-            sortBy:
-              type: string
-              example: _id
-            sortOrder:
-              example: 'asc'
+            totalItems:
+              type: number
+              example: 10
+            totalPages:
+              type: number
+              example: 8
+            hasNextPage:
+              type: boolean
+              example: true
+            hasPreviousPage:
+              type: boolean
+              example: false
+
   '401':
     $ref: '../../components/responses/401.yaml'
