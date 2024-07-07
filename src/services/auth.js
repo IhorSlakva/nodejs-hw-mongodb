@@ -5,7 +5,7 @@ import { SessionsCollections } from '../db/models/sessions.js';
 import { createSession } from '../utils/createSession.js';
 import jwt from 'jsonwebtoken';
 import { env } from '../utils/env.js';
-import { ENV_VARS } from '../constants/constans.js';
+import { ENV_VARS } from '../constants/constants.js';
 import { sendMail } from '../utils/sendMail.js';
 import handlebars from 'handlebars';
 import path from 'node:path';

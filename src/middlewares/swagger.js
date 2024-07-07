@@ -1,7 +1,7 @@
 import createHttpError from 'http-errors';
 import fs from 'node:fs';
 import swaggerUi from 'swagger-ui-express';
-import { SWAGGER_PATH } from '../constants/constans.js';
+import { SWAGGER_PATH } from '../constants/constants.js';
 
 export const swagger = () => {
   try {

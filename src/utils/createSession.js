@@ -1,4 +1,4 @@
-import { TIME_FOR_TOKEN } from '../constants/constans.js';
+import { TIME_FOR_TOKEN } from '../constants/constants.js';
 import crypto from 'crypto';
 
 export const createSession = () => {
